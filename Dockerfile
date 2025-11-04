@@ -9,6 +9,10 @@ ENV TMZ=${TMZ}
 # astree uses QT. Make sure QT uses offscreen platform as no GUI will be avialable in this docker container
 ENV QT_QPA_PLATFORM=offscreen
 
+# setup UTF-8 locale
+ENV LANG=C.UTF-8
+ENV LC_ALL=C.UTF-8
+
 # Make sure you set the AI_LICENSE_TLS environment, like docker run -e AI_LICENSE_TLS=your_astree_license_manager_url ...
 
 # do one large transaction
