@@ -19,7 +19,7 @@ $ docker run \
 ## Build Instructions
 
 ```sh
-docker built -t astree-docker:25.10 .
+docker build --no-cache -t astree-docker:25.10 .
 ```
 
 ## Upload instructions
