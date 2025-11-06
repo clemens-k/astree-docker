@@ -20,11 +20,11 @@ ENV LC_ALL=C.UTF-8
 # 2) update
 # 3) install the needed packages
 RUN ln -fs /usr/share/zoneinfo/${TMZ} /etc/localtime && \
-    dnf update -y && \
-    dnf install -y epel-release && \
+    dnf update -y --setopt=retries=3 --setopt=timeout=30 && \
+    dnf install -y --setopt=retries=3 --setopt=timeout=30 epel-release && \
     crb enable && \
     dnf update -y && \
-    dnf install -y glibc-langpack-en langpacks-en mc tar wget git chrpath vim-enhanced sudo \
+    dnf install -y --setopt=retries=3 --setopt=timeout=30 glibc-langpack-en langpacks-en mc tar wget git chrpath vim-enhanced sudo \
                    perl-FindBin perl-Time-HiRes perl-XML-SAX perl-XML-Simple perl-XML-NamespaceSupport perl-XML-LibXML perl-DBD-MySQL perl-JSON perl-Sys-Hostname perl-Unicode-Normalize perl-IPC-Cmd perl-open perl-sigtrap perl-Capture-Tiny \
                    lsb_release gcc gcc-c++ glibc.i686 libstdc++.i686 zlib.i686 libnsl libnsl.i686 ncurses-compat-libs ncurses-devel \
                    autoconf automake gettext libtool make patch pkgconfig redhat-rpm-config rpm-build expect texinfo \
