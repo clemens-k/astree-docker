@@ -19,17 +19,19 @@ ENV LC_ALL=C.UTF-8
 # 1) fix the time zone
 # 2) update
 # 3) install the needed packages
-RUN ln -fs /usr/share/zoneinfo/Europe/Berlin /etc/localtime && \
-    dnf clean all && \
-    dnf config-manager --set-enabled appstream && \
-    dnf update -y && \
-    dnf install -y epel-release && \
+RUN ln -fs /usr/share/zoneinfo/${TMZ} /etc/localtime && \
+    dnf update -y --setopt=retries=3 --setopt=timeout=30 && \
+    dnf install -y --setopt=retries=3 --setopt=timeout=30 epel-release && \
     crb enable && \
     dnf update -y && \
-    dnf install -y --no-best \
-      glibc-langpack-en langpacks-en mc tar wget git chrpath vim-enhanced sudo \
-      xcb-util-devel xcb-util-image-devel xcb-util-renderutil-devel \
-      xcb-util-keysyms-devel xcb-util-wm-devel xcb-util-cursor-devel && \
+    dnf install -y --setopt=retries=3 --setopt=timeout=30 glibc-langpack-en langpacks-en mc tar wget git chrpath vim-enhanced sudo \
+                   perl-FindBin perl-Time-HiRes perl-XML-SAX perl-XML-Simple perl-XML-NamespaceSupport perl-XML-LibXML perl-DBD-MySQL perl-JSON perl-Sys-Hostname perl-Unicode-Normalize perl-IPC-Cmd perl-open perl-sigtrap perl-Capture-Tiny \
+                   lsb_release gcc gcc-c++ glibc.i686 libstdc++.i686 zlib.i686 libnsl libnsl.i686 ncurses-compat-libs ncurses-devel \
+                   autoconf automake gettext libtool make patch pkgconfig redhat-rpm-config rpm-build expect texinfo \
+                   cups-devel openssl-devel glib2-devel libaio-devel pixman-devel expat-devel graphviz \
+                   fontconfig-devel freetype-devel libICE-devel libSM-devel libX11-devel libXext-devel libXfixes-devel libXi-devel libXrender-devel mesa-libGL-devel \
+                   libxcb-devel libxkbcommon-devel libxkbcommon-x11-devel wayland-devel wayland-protocols-devel \
+                   xcb-util-devel xcb-util-image-devel xcb-util-renderutil-devel xcb-util-keysyms-devel xcb-util-wm-devel xcb-util-cursor-devel && \
     dnf clean all
 
 # Create a user and group
