@@ -1,4 +1,8 @@
+
+
 # astree-docker
+
+[![Docker Image CI](https://github.com/clemens-k/astree-docker/actions/workflows/docker-image.yml/badge.svg)](https://github.com/clemens-k/astree-docker/actions/workflows/docker-image.yml)
 
 Rocky Linux docker image with necessary system libraries preinstalled to run AbsInt Astrée
 
