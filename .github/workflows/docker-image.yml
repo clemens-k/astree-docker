@@ -6,7 +6,7 @@ on:
   pull_request:
     branches: [ "main" ]
   schedule:
-    # Every Saturday at 08:00 UTC
+    # Once per week (Every Saturday at 08:00 UTC)
     - cron: '0 8 * * 6'
   workflow_dispatch: # can be started manually
 
